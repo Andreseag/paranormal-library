@@ -1,5 +1,9 @@
 {
-    "extends": ["wesbos"],
+    "prettier/prettier": ["error", {"singleQuote": true, "parser": "flow"}],
+    "extends": [
+        "wesbos",
+        "prettier"
+    ],
     "rules": {
         "prefer-const": "off",
         "react/prop-types": "off",
