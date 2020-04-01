@@ -2,17 +2,16 @@ import React from 'react';
 import Book from './Book';
 import Filter from './Filter';
 
-const Library = () => {
+const Library = ({ books }) => {
   return ( 
     <div>
       <Filter />
-      {'.'
-        .repeat(5)
-        .split('')
-        .map(()=>(
-          <Book />  
-        ))
-      }
+      <div className="shetter">
+        {Object.entries(books).map(([id, book])=>(
+            <Book {...book}/>  
+          ))
+        }
+      </div>
     </div>
    );
 }

@@ -1,10 +1,15 @@
 import React from 'react';
 
-const Book = () => (
+const Book = ({
+    title,
+    available,
+    author,
+    cover
+}) => (
     <div className="book">
         <figure className="book__img">
             <img
-                src="http://debakatas.com/cover/enlasmontanasdelalocura.jpg"
+                src={cover}
                 alt=""
             />
         </figure>
