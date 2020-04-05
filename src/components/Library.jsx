@@ -1,16 +1,27 @@
-import React from 'react';
+import React , { useState } from 'react';
 import Book from './Book';
 import Filter from './Filter';
+import NoBook from './NoBook';
 
 const Library = ({ books }) => {
+
+  const [booksFiltered, setBooksFiltered] = useState(books)
+  
+  const arrayBooks = Object.entries(booksFiltered);
+  
+  
   return ( 
     <div>
-      <Filter />
+      <Filter 
+        books={books} 
+        setBooksFiltered={setBooksFiltered}
+      />
       <div className="shetter">
-        {Object.entries(books).map(([id, book])=>(
+        {arrayBooks.length ? arrayBooks.map(
+          ([id, book])=>(
             <Book {...book}/>  
-          ))
-        }
+          )
+        ) : <NoBook /> }
       </div>
     </div>
    );

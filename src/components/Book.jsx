@@ -6,14 +6,16 @@ const Book = ({
     author,
     cover
 }) => (
-    <div className="book">
+    <div class={`book ${!available && 'book--unavailable'}`}>
         <figure className="book__img">
             <img
                 src={cover}
                 alt=""
             />
         </figure>
-        <button type="button">Pedir</button>
+        <button type="button">
+            {!available ? "No disponible" : "Pedir"}
+        </button>
     </div>
 );
 

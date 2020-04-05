@@ -9,6 +9,19 @@
     .book__img > img 
       top: 0%
 
+  &--unavailable
+    opacity: .5
+
+    &:hover
+
+      .book__img
+      
+        > img 
+          top: 20%
+    >button 
+      pointer-events: none
+      background-color: color-green
+
   &__img
     padding: 0 10px
     position: relative
@@ -128,6 +141,8 @@
     flex-basis: 400px
     flex-shrink: 0
 
+  >:last-child
+    flex-grow: 1
 
 .cartel
   background: color-green
@@ -199,3 +214,10 @@
   grid-template-columns: repeat(3, 1fr)
   grid-column-gap: 20px 
   padding-bottom: 40px 
+
+
+
+.no-book
+  padding: 60px
+  font-size: 20px
+  white-space: nowrap
