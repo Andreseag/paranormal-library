@@ -2,7 +2,10 @@ import React from 'react';
 import User from './User';
 import CreateUser from './CreateUser';
 
-const Clients = () => {
+const Clients = ({clients, setClients}) => {
+
+  const a = '';
+
   return ( 
     <div>
       <h1 className="cartel">
@@ -10,12 +13,13 @@ const Clients = () => {
         <small>0.00</small>
       </h1>
       <div className="clients">
-        <CreateUser />
-        {'.'
-          .repeat(5)
-          .split('')
-          .map(()=>(
-            <User />  
+        <CreateUser 
+          clients={clients}
+          setClients={setClients}
+        />
+        {Object.entries(clients)
+          .map(([id, client])=>(
+            <User name={id} {...client}/>  
           ))
         }
       </div>

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Library from './library';
 import Clients from './Clients';
 // This JSON will be our "back-end" (data)
@@ -8,10 +8,12 @@ const API_URL =
 
 const App = () => {
 
-    const [info, setInfo] = React.useState({
+    const [info, setInfo] = useState({
         minuteProce: 0,
         books: {}
     });
+
+    const [clients, setClients] = useState({});
 
     
     useEffect(
@@ -24,7 +26,10 @@ const App = () => {
     )
     return(
         <div className="app">
-            <Clients />
+            <Clients 
+                clients={clients} 
+                setClients={setClients}
+            />
             <Library books={info.books} />  
         </div>
     )

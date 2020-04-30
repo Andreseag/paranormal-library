@@ -1,8 +1,8 @@
 import React from 'react';
 
-const User = () => (
+const User = ({name, books, dateCreate}) => (
     <div className="user user__hightlight">
-        <h3>Andres Castro</h3>
+        <h3>{name}</h3>
         <figure className="user__books">
             <img
                 src="http://debakatas.com/cover/enlasmontanasdelalocura.jpg"
