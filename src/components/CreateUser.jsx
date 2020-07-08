@@ -1,12 +1,15 @@
-import React, {useRef} from 'react'
+import React, {useRef, useState} from 'react'
 
 const CreateUser = ({ clients, setClients }) => {
   const form = useRef(null);
+  const [error, setError] = useState("");
 
   const userCreation = (e) => {
     e.preventDefault();
+    setError("");
+
     const formData = new FormData(form.current);
-    const nickname = formData.get('nickname');
+    const nickname = formData.get('nickname').toLocaleLowerCase();
     console.log(nickname);
 
     if(!clients[nickname]){
@@ -20,6 +23,8 @@ const CreateUser = ({ clients, setClients }) => {
       }
 
       setClients(newClients);
+    } else {
+      setError(`Usuario ${nickname} ya existe`)
     }
   }
   
@@ -29,6 +34,11 @@ const CreateUser = ({ clients, setClients }) => {
         <input type="text" placeholder="Nickname" name="nickname"/>
         <button type="submit">+</button>
       </form>
+
+      { 
+        error && <small className="error">{error}</small>
+      }
+      
     </div>
    );
 }
