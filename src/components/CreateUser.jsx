@@ -9,10 +9,10 @@ const CreateUser = ({ clients, setClients }) => {
     setError("");
 
     const formData = new FormData(form.current);
-    const nickname = formData.get('nickname').toLocaleLowerCase();
+    const nickname = formData.get('nickname').toLocaleLowerCase().replace(/ /g, '');
     console.log(nickname);
 
-    if(!clients[nickname]){
+    if(!clients[nickname] && nickname){
       const newClients = {
         ...clients,
         [nickname]: {
@@ -24,7 +24,7 @@ const CreateUser = ({ clients, setClients }) => {
 
       setClients(newClients);
     } else {
-      setError(`Usuario ${nickname} ya existe`)
+      setError(nickname ? `Usuario ${nickname} ya existe` : 'Debes definir un usuario');
     }
   }
   
